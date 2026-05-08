@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: Chapter-9-Mircoservices
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/Microservice_quizapp
+    username: root
+    password: Yash123@
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: never
+      data-locations: classpath:data.sql
