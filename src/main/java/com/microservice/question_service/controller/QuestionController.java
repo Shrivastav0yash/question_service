@@ -1,6 +1,8 @@
 package com.microservice.question_service.controller;
 
 import com.microservice.question_service.entities.Question;
+import com.microservice.question_service.entities.QuestionWrapper;
+import com.microservice.question_service.entities.Response;
 import com.microservice.question_service.service.QuestionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -73,6 +75,25 @@ public class QuestionController {
             log.error(String.valueOf(e));
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/generate")
+    public ResponseEntity<List<Integer>> getQuestionForQuiz
+            (@RequestParam String categoryName, @RequestParam Integer numQuestions ){
+        List<Integer> allQuestions = questionService.getQuestionForQuiz(categoryName, numQuestions);
+        return new ResponseEntity<>(allQuestions, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/getQuestions")
+    public ResponseEntity<List<QuestionWrapper>> getQuestionFromId(@RequestBody List<Integer> questionsIds){
+        List<QuestionWrapper> questionsList = questionService.getQuestionsFromId(questionsIds);
+        return new ResponseEntity<>(questionsList, HttpStatus.OK);
+    }
+
+    @PostMapping("/getScore")
+    public ResponseEntity<Integer> getScore(@RequestBody List<Response> responses){
+        Integer result = questionService.getScore(responses);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     //Generate Quiz
