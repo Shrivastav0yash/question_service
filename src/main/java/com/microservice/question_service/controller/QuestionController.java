@@ -96,7 +96,4 @@ public class QuestionController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    //Generate Quiz
-    // proivde question to create Quiz to Quiz
-    //getScore
 }

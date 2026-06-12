@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Chapter-9-Mircoservices
+    name: Question-Service
 
   datasource:
     url: jdbc:mysql://localhost:3306/Microservice_quizapp
